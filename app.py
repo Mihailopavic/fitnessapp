@@ -14,7 +14,8 @@ app.config["SECRET_KEY"] = os.getenv("SECRET_KEY", "dev-key")
 app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL", "sqlite:///local_dev.db")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-db = SQLAlchemy(app)
+db = SQLAlchemy()
+db.init_app(app)
 
 
 # -----------------------
