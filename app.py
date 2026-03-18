@@ -11,7 +11,12 @@ app.config["SECRET_KEY"] = os.getenv("SECRET_KEY", "dev-key")
 
 # MariaDB URL Beispiel:
 # mysql+pymysql://fitnessuser:PASS@127.0.0.1:3306/fitnessapp
-app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL", "sqlite:///local_dev.db")
+db_url = os.getenv("DATABASE_URL")
+
+if db_url and db_url.startswith("postgres://"):
+    db_url = db_url.replace("postgres://", "postgresql://", 1)
+
+app.config["SQLALCHEMY_DATABASE_URI"] = db_url or "sqlite:///local_dev.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy()
