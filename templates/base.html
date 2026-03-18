@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title or "FitnessApp" }}</title>
+</head>
+<body>
+  <nav>
+    <a href="/">Home</a> |
+    <a href="/workouts">Workouts</a> |
+    <a href="/register">Register</a> |
+    <a href="/login">Login</a> |
+    <a href="/logout">Logout</a>
+  </nav>
+  <hr>
+
+  {% block content %}{% endblock %}
+</body>
+</html>

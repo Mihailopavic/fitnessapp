@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Workouts</h1>
+
+  {% if error %}
+    <p style="color:red">{{ error }}</p>
+  {% endif %}
+
+<h2>Neues Workout</h2>
+
+<form method="POST">
+
+Titel:<br>
+<input type="text" name="title" required><br><br>
+
+Datum:<br>
+<input type="date" name="workout_date" required><br><br>
+
+Typ:<br>
+<input type="text" name="workout_type" required><br><br>
+
+Dauer (Minuten):<br>
+<input type="number" name="duration_min" required><br><br>
+
+Notizen:<br>
+<textarea name="notes"></textarea><br><br>
+
+<button type="submit">Speichern</button>
+
+</form>
+
+  <h2>Liste</h2>
+  <ul>
+    {% for w in items %}
+      <li>
+        {{ w.title }} - {{ w.duration_min }} min
+        <a href="/workouts/delete/{{ w.id }}">Delete</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
