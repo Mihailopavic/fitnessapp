@@ -1,14 +1,31 @@
 {% extends "base.html" %}
+
 {% block content %}
-  <h1>Login</h1>
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-4">
+                <h1 class="h3 mb-4">Login</h1>
 
-  {% if error %}
-    <p style="color:red">{{ error }}</p>
-  {% endif %}
+                {% if error %}
+                    <div class="alert alert-danger">{{ error }}</div>
+                {% endif %}
 
-  <form method="post">
-    Email:<br><input name="email" value="{{ email or '' }}"><br>
-    Passwort:<br><input type="password" name="password"><br><br>
-    <button type="submit">Login</button>
-  </form>
+                <form method="post">
+                    <div class="mb-3">
+                        <label class="form-label">E-Mail</label>
+                        <input type="email" name="email" class="form-control" value="{{ email or '' }}" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Passwort</label>
+                        <input type="password" name="password" class="form-control" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-dark w-100">Einloggen</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
